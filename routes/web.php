@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::post('/admin/add-posts', [PostsController::class, 'store'])->name('admin.add-posts');
+Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts');
