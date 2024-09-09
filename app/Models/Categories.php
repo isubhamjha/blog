@@ -16,6 +16,6 @@ class Categories extends Model
     ];
     public function posts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Posts::class, 'post_jn_categories', 'post_id','category_id');
+        return $this->belongsToMany(Posts::class, 'post_jn_categories', 'category_id','post_id');
     }
 }

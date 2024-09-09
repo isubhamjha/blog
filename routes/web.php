@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin\PostsController;
+use App\Http\Controllers\CategoriesController;
+use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +22,7 @@ Route::get('/', function () {
 
 
 Route::post('/admin/add-posts', [PostsController::class, 'store'])->name('admin.add-posts');
-Route::get('/admin/posts', [PostsController::class, 'index'])->name('admin.posts');
+Route::resource('/admin/posts', PostsController::class);
+Route::get('/admin/posts/category/{category_id}', [PostsController::class, 'index'])->name('posts.index');
+Route::resource('/admin/categories', CategoriesController::class);
+

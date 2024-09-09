@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Posts extends Model
 {
@@ -16,8 +17,8 @@ class Posts extends Model
         'cover_image',
         'cover_image_alt'
     ];
-    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Categories::class,'post_jn_categories','category_id','post_id');
+        return $this->belongsToMany(Categories::class,'post_jn_categories','post_id','category_id');
     }
 }

@@ -19,7 +19,7 @@ class PostsFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
-            'body' => $this->faker->paragraph(),
+            'body' => $this->faker->randomHtml(),
             'cover_image' => $this->faker->imageUrl(),
             'cover_image_alt' => $this->faker->text()
         ];
