@@ -38,6 +38,7 @@
     ======================================================== -->
 </head>
 
+
 <body class="toggle-sidebar">
 
 <!-- ======= Header ======= -->
@@ -507,7 +508,20 @@
 </aside><!-- End Sidebar-->
 
 <main id="main" class="main">
-
+    @if(Session::has('flash'))
+        <div class="alert
+        @if(Session::get('flash')['type'] == 'success')
+            alert-success bg-success
+        @elseif(Session::get('flash')['type'] == 'danger')
+            alert-danger bg-danger
+        @elseif(Session::get('flash')['type'] == 'info')
+            alert-primary bg-primary
+        @endif
+        text-light border-0 alert-dismissible fade show" role="alert">
+             {{ Session::get('flash')['message'] }}
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     @yield('contents')
 
 </main><!-- End #main -->

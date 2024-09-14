@@ -73,7 +73,9 @@
                         </tbody>
                     </table>
                     <!-- End Table with stripped rows -->
-                    {!! $posts->render() !!}
+                    @if(count($posts) > 1)
+                        {!! $posts->render() !!}
+                    @endif
                 </div>
             </div>
         </div>

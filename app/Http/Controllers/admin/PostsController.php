@@ -9,6 +9,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\info;
+
 
 class PostsController extends Controller
 {
@@ -72,11 +74,14 @@ class PostsController extends Controller
             'body' => 'required'
         ]);
         $post = Posts::findOrFail($id);
-        $post->update([
+        $resp = $post->update([
             'title'=> $request->get('title'),
             'body'=> $request->get('body'),
         ]);
-       return redirect('/admin/posts/'.$post->id);
+       return redirect('/admin/posts/'.$post->id)->with('flash', [
+           'message' => $resp ? 'Post updated successfully' : 'Error updating post',
+           'type' => $resp ? 'success' : 'danger',
+       ]);
     }
 
     /**
